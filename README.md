@@ -4,13 +4,22 @@
 ## Usage
 
 ```workflow
+# Triggered by new releases on GitHub
 workflow "Publish a release" {
   on = "release"
   resolves = ["publish"]
 }
 
-action "Validate my release" {
+# Run some checks against the new release
+action "validate release" {
   uses = "JasonEtco/validate-semver-release@master"
+}
+
+# Publish the library to NPM if all is good!
+action "Publish {
+  uses = "actions/npm@master"
+  args = "publish"
+  needs = ["validate release"]
 }
 ```
 
