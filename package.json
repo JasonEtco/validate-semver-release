@@ -1,5 +1,5 @@
 {
-  "name": "validate-release",
+  "name": "validate-semver-release",
   "private": true,
   "main": "index.js",
   "dependencies": {
