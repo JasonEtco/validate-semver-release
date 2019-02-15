@@ -1,6 +1,12 @@
 <h3 align="center">Validate Semver Release</h3>
 <p align="center">A GitHub Action that validates GitHub Releases against semantic versioning rules<p>
 
+## What it checks for
+
+* That the Git tag and the version in your `package.json` match
+* That the Git tag and the `package.json` version are both valid SemVer
+* That if the release is a prerelease, so is your version (either `beta` or `next`)
+
 ## Usage
 
 ```workflow
