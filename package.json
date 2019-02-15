@@ -2,6 +2,9 @@
   "name": "validate-semver-release",
   "private": true,
   "main": "index.js",
+  "scripts": {
+    "test": "jest && standard"
+  },
   "dependencies": {
     "actions-toolkit": "^1.4.0",
     "semver": "^5.6.0"
