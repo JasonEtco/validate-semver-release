@@ -1,1 +1,1 @@
-require('./entrypoint')()
+require('.')()
