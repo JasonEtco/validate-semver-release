@@ -3,8 +3,17 @@
 
 ## Usage
 
-:soon:
+```workflow
+workflow "Publish a release" {
+  on = "release"
+  resolves = ["publish"]
+}
 
-## How it works
+action "Validate my release" {
+  uses = "JasonEtco/validate-semver-release@master"
+}
+```
 
-:soon:
+If your release is a valid prerelease, it'll store the prerelease tag in a `release-workflow-tag` file in the workspace.
+
+One example usage is to use the contents of that file in later actions to pass a `--tag` flag to `npm publish`.
