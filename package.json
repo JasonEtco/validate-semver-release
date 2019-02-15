@@ -3,7 +3,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "jest && standard"
+    "test": "jest --coverage && standard"
   },
   "dependencies": {
     "actions-toolkit": "^1.4.0",

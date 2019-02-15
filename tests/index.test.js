@@ -2,12 +2,18 @@ const path = require('path')
 const runAction = require('..')
 const { Toolkit } = require('actions-toolkit')
 
-function mockToolkit (event) {
+function mockToolkit (event, workspace = 'workspace') {
   // Load the relevant JSON file
   process.env.GITHUB_EVENT_PATH = path.join(
     __dirname,
     'fixtures',
     `${event}.json`
+  )
+  // Load the relevant workspace file
+  process.env.GITHUB_WORKSPACE = path.join(
+    __dirname,
+    'fixtures',
+    workspace
   )
 
   // Silence warning
@@ -51,5 +57,25 @@ describe('validate-semver-release', () => {
     const tools = mockToolkit('release')
     runAction(tools)
     expect(tools.exit.success).toHaveBeenCalled()
+  })
+
+  describe('prereleases', () => {
+    it('exits failure with no semver prelease on the tag', () => {
+      const tools = mockToolkit('release-prerelease-not-tag')
+      runAction(tools)
+      expect(tools.exit.failure).toHaveBeenCalled()
+    })
+
+    it('exits failure with an invalid prerelease tag', () => {
+      const tools = mockToolkit('release-prerelease-invalid-tag', 'workspace-invalid-prerelease')
+      runAction(tools)
+      expect(tools.exit.failure).toHaveBeenCalled()
+    })
+
+    it('writes to a file with a valid tag and version', () => {
+      const tools = mockToolkit('release-prerelease', 'workspace-prerelease')
+      runAction(tools)
+      expect(tools.exit.success).toHaveBeenCalled()
+    })
   })
 })

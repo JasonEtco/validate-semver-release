@@ -1,0 +1,7 @@
+{
+  "release": {
+    "draft": false,
+    "prerelease": true,
+    "tag_name": "v1.0.0-meow.1"
+  }
+}
