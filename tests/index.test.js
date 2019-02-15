@@ -39,24 +39,28 @@ describe('validate-semver-release', () => {
     const tools = mockToolkit('release-draft')
     runAction(tools)
     expect(tools.exit.neutral).toHaveBeenCalled()
+    expect(tools.exit.neutral.mock.calls).toMatchSnapshot()
   })
 
   it('exits failure for invalid tag', () => {
     const tools = mockToolkit('release-invalid-tag')
     runAction(tools)
     expect(tools.exit.failure).toHaveBeenCalled()
+    expect(tools.exit.failure.mock.calls).toMatchSnapshot()
   })
 
   it('exits failure for a tag/version mismatch', () => {
     const tools = mockToolkit('release-wrong-version')
     runAction(tools)
     expect(tools.exit.failure).toHaveBeenCalled()
+    expect(tools.exit.failure.mock.calls).toMatchSnapshot()
   })
 
   it('exits successfully with no issues', () => {
     const tools = mockToolkit('release')
     runAction(tools)
     expect(tools.exit.success).toHaveBeenCalled()
+    expect(tools.exit.success.mock.calls).toMatchSnapshot()
   })
 
   describe('prereleases', () => {
@@ -64,18 +68,21 @@ describe('validate-semver-release', () => {
       const tools = mockToolkit('release-prerelease-not-tag')
       runAction(tools)
       expect(tools.exit.failure).toHaveBeenCalled()
+      expect(tools.exit.failure.mock.calls).toMatchSnapshot()
     })
 
     it('exits failure with an invalid prerelease tag', () => {
       const tools = mockToolkit('release-prerelease-invalid-tag', 'workspace-invalid-prerelease')
       runAction(tools)
       expect(tools.exit.failure).toHaveBeenCalled()
+      expect(tools.exit.failure.mock.calls).toMatchSnapshot()
     })
 
     it('writes to a file with a valid tag and version', () => {
       const tools = mockToolkit('release-prerelease', 'workspace-prerelease')
       runAction(tools)
       expect(tools.exit.success).toHaveBeenCalled()
+      expect(tools.exit.success.mock.calls).toMatchSnapshot()
       const file = tools.getFile('release-workflow-tag')
       expect(file).toBe('beta')
     })

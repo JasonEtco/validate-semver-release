@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validate-semver-release exits failure for a tag/version mismatch 1`] = `
+Array [
+  Array [
+    "Tag 2.0.0 and version in the package.json 1.0.0 are not the same.",
+  ],
+]
+`;
+
+exports[`validate-semver-release exits failure for invalid tag 1`] = `
+Array [
+  Array [
+    "The tag pizzadog is not a valid tag.",
+  ],
+]
+`;
+
+exports[`validate-semver-release exits neutral for draft releases 1`] = `
+Array [
+  Array [
+    "This release is a draft! Aborting.",
+  ],
+]
+`;
+
+exports[`validate-semver-release exits successfully with no issues 1`] = `
+Array [
+  Array [
+    "Release of version 1.0.0 is all set!",
+  ],
+]
+`;
+
+exports[`validate-semver-release prereleases exits failure with an invalid prerelease tag 1`] = `
+Array [
+  Array [
+    "Publish tag meow is not a valid tag - it must be one of beta, next",
+  ],
+]
+`;
+
+exports[`validate-semver-release prereleases exits failure with no semver prelease on the tag 1`] = `
+Array [
+  Array [
+    "The release is a prerelease, but the version tag is not.",
+  ],
+]
+`;
+
+exports[`validate-semver-release prereleases writes to a file with a valid tag and version 1`] = `
+Array [
+  Array [
+    "Release of version 1.0.0-beta.1 is all set!",
+  ],
+]
+`;
