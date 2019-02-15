@@ -8,7 +8,7 @@ action "npm ci" {
   args = "ci"
 }
 
-action "npm ci" {
+action "npm test" {
   uses = "actions/npm@master"
   args = "test"
   needs = ["npm ci"]
