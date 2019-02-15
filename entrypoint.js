@@ -1,6 +1,6 @@
 const semver = require('semver')
 const { Toolkit } = require('actions-toolkit')
-const tools = new Toolkit()
+const tools = new Toolkit({ event: 'release' })
 
 const pkg = tools.getPackageJSON()
 const { release } = tools.context.payload
