@@ -76,6 +76,8 @@ describe('validate-semver-release', () => {
       const tools = mockToolkit('release-prerelease', 'workspace-prerelease')
       runAction(tools)
       expect(tools.exit.success).toHaveBeenCalled()
+      const file = tools.getFile('release-workflow-tag')
+      expect(file).toBe('beta')
     })
   })
 })
