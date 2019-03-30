@@ -6,7 +6,7 @@
     "test": "jest --coverage && standard"
   },
   "dependencies": {
-    "actions-toolkit": "^1.4.0",
+    "actions-toolkit": "^1.9.1",
     "semver": "^5.6.0"
   },
   "devDependencies": {

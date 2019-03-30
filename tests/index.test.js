@@ -1,5 +1,4 @@
 const path = require('path')
-const runAction = require('..')
 const { Toolkit } = require('actions-toolkit')
 
 function mockToolkit (event, workspace = 'workspace') {
@@ -28,7 +27,12 @@ function mockToolkit (event, workspace = 'workspace') {
 }
 
 describe('validate-semver-release', () => {
+  let runAction
+
   beforeEach(() => {
+    Toolkit.run = jest.fn(fn => { runAction = fn })
+    require('../entrypoint')
+
     Object.assign(process.env, {
       GITHUB_EVENT: 'release',
       GITHUB_WORKSPACE: path.join(__dirname, 'fixtures', 'workspace')
