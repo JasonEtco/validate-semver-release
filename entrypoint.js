@@ -3,7 +3,7 @@ const path = require('path')
 const semver = require('semver')
 const { Toolkit } = require('actions-toolkit')
 
-Toolkit.run(async tools => {
+Toolkit.run(tools => {
   const pkg = tools.getPackageJSON()
   const { release } = tools.context.payload
 
