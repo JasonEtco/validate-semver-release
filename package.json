@@ -6,12 +6,12 @@
     "test": "jest --coverage && standard"
   },
   "dependencies": {
-    "actions-toolkit": "^1.9.1",
-    "semver": "^5.6.0"
+    "actions-toolkit": "^2.2.0",
+    "semver": "^6.3.0"
   },
   "devDependencies": {
-    "jest": "^24.1.0",
-    "standard": "^12.0.1"
+    "jest": "^24.9.0",
+    "standard": "^14.3.1"
   },
   "standard": {
     "env": [

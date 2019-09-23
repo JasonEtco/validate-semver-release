@@ -24,7 +24,7 @@ Toolkit.run(tools => {
     const prereleaseTag = semver.prerelease(release.tag_name)
 
     if (prereleaseTag === null) {
-      return tools.exit.failure(`The release is a prerelease, but the version tag is not.`)
+      return tools.exit.failure('The release is a prerelease, but the version tag is not.')
     }
 
     const VALID_TAGS = ['beta', 'next']
