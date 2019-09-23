@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const semver = require('semver')
 const { Toolkit } = require('actions-toolkit')
+const core = require('@actions/core')
 
 Toolkit.run(tools => {
   const pkg = tools.getPackageJSON()
@@ -34,6 +35,7 @@ Toolkit.run(tools => {
       return tools.exit.failure(`Publish tag ${tagName} is not a valid tag - it must be one of ${VALID_TAGS.join(', ')}`)
     }
 
+    core.setOutput('release-workflow-tag', tagName)
     fs.writeFileSync(path.join(tools.workspace, 'release-workflow-tag'), tagName)
   }
 
