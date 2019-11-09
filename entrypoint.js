@@ -28,7 +28,7 @@ Toolkit.run(tools => {
       return tools.exit.failure('The release is a prerelease, but the version tag is not.')
     }
 
-    const VALID_TAGS = ['beta', 'next']
+    const VALID_TAGS = ['alpha', 'beta', 'next', 'rc']
     const [tagName] = prereleaseTag
 
     if (!VALID_TAGS.includes(tagName)) {
